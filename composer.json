@@ -1,0 +1,37 @@
+{
+    "name": "sirolad/9jamoji",
+    "description": "A RestFul API using Slim Framework For Emoji Service​",
+    "type": "API",
+    "keywords": [
+        "PHP",
+        "Slim",
+        "API",
+        "Emoji",
+        "Service"
+    ],
+    "require": {
+        "slim/slim": "^2.6",
+        "slim/views": "0.1.*",
+        "twig/twig": "1.18.*",
+        "illuminate/database": "~5.1",
+        "vlucas/phpdotenv": "^2.0",
+        "firebase/php-jwt": "dev-master"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sirolad\\": "app/"
+        },
+        "classmap": ["app/"]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Surajudeen Akande",
+            "email": "surajudeen.akande@andela.com"
+        }
+    ],
+    "homepage": "https://github.com/andela-sakande/9jamoji"
+}
