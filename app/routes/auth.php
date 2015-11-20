@@ -19,3 +19,10 @@ $app->post('/register', function () use ($app) {
 $app->post('/auth/login', function () use ($app){
     echo UserController::login($app);
 });
+
+/*
+| logout
+*/
+$app->post('/auth/logout', function () use ($app){
+    echo UserController::logout($app);
+});

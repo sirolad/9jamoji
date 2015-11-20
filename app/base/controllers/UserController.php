@@ -27,7 +27,6 @@ class UserController
         if ($username && $password && $cpassword) {
             if (strlen($password) > 4) {
                 if ($password == $cpassword) {
-                    $user = new User();
                     $user = User::firstOrCreate(array('username' => $username, 'password' => sha1($password)));
                     return json_encode(['status' => 201, 'username' => $username, 'message' => 'Created! Login to get a token.']);
                 }
@@ -73,9 +72,16 @@ class UserController
 
             $key = getenv('jwt_key');
             $algorithm = getenv('jwt_algorithm');
-            $issued_at = $_SERVER['REQUEST_TIME'];
-            $expires = time() + 3600;
-            $token = array("issued" => getenv('jwt_issued_at'), "issuer" => getenv('jwt_issuer'), "not_before" => getenv('jwt_not_before'), "user" => $authUser['username']);
+            $issued_at = time();
+            $expires = time() + 1800;
+            $token = array(
+                "issued" => getenv('jwt_issued_at'),
+                "issuer" => getenv('jwt_issuer'),
+                "not_before" => getenv('jwt_not_before'),
+                "user" => $authUser['username'],
+                "issued_time" => $issued_at,
+                "token_expire" => $expires
+            );
 
             $jwt = JWT::encode($token, $key, $algorithm);
 
@@ -84,4 +90,26 @@ class UserController
             return json_encode($success);
         }
     }
+
+    public static function logout(Slim $app)
+    {
+        $app->response->headers->set('Content-Type', 'application/json');
+
+        $token = $app->request->headers->get('Authorization');
+
+        if (!isset($token)) {
+            return Errors::error401('Token not found or incorrect');
+        } else {
+            $decode_jwt = JWT::decode($jwt);
+
+            $success = array(
+                "status"  => 200,
+                "message" => "You have been successfully logged out!"
+            );
+
+            return json_encode($success);
+        }
+
+    }
+
 }
