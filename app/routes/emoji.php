@@ -17,3 +17,11 @@ $app->post('/emojis', function () use ($app){
 $app->delete('/emojis/:id', function ($id) use ($app){
     echo EmojiController::deleteEmoji($app, $id);
 });
+
+$app->put('/emojis/:id', function ($id) use ($app){
+    echo EmojiController::updateEmoji($app, $id);
+});
+
+$app->patch('/emojis/:id', function ($id) use ($app){
+    echo EmojiController::updateEmoji($app, $id);
+});

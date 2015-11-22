@@ -13,20 +13,21 @@ class EmojiController
     {
         $app->response->headers->set('Content-Type', 'application/json');
 
-        $emojis = Emoji::all();
+        //$emojis = Emoji::all();
         $name = $app->request->params(UserController::format('name'));
         $char = $app->request->params('char');
         $keywords = $app->request->params('keywords');
         $category = $app->request->params(UserController::format('category'));
 
         if (isset($name) && isset($char) && isset($keywords) && isset($category)) {
-            $emoji = Emoji::create(array(
-                'name'      => $name,
-                'char'      => $char,
-                'keywords'  => explode(",",$keywords),
-                'category'  => $category,
-                'created_by'=> 'you'
-            ));
+            $emoji = new Emoji;
+            $emoji->name = $name;
+            $emoji->char = $char;
+            $emoji->keywords = $keywords;
+            $emoji->category = $category;
+            $emoji->created_by = "you";
+
+            $emoji->save();
 
             return json_encode(['status' => 201, 'message' => 'Your emoji was successfully created.']);
         } else {
@@ -48,7 +49,7 @@ class EmojiController
         if ($selected) {
             echo $selected;
         } else {
-            return Errors::error401('The requested id does not exist');
+            return Errors::error401("The requested id:$id does not exist");
         }
     }
 
@@ -60,10 +61,33 @@ class EmojiController
         if ($deleted) {
             $info = array(
                 "status"  => 201,
-                "message" => "Emoji .$id. has been deleted successfully!");
+                "message" => "Emoji $id has been deleted successfully!");
             return json_encode($info);
         } else {
-            return Errors::error401('The requested id does not exist');
+            return Errors::error401("The requested id:$id does not exist");
         }
+    }
+
+    public static function updateEmoji(Slim $app, $id)
+    {
+        $app->response->headers->set('Content-Type', 'application/json');
+
+        $update = Emoji::find($id);
+
+        if ($update) {
+            $columns = $app->request->isPut() ? $app->request->put() : $app->request->patch();
+
+            foreach ($columns as $key => $value) {
+                $update->$key = $value;
+            }
+            //$update->updated_at = gmdate("Y-m-d H:i:s", time());
+            $update->save();
+
+            return json_encode(['status' => 201, 'message' => 'Emoji '.$id.' successfully updated!']);
+
+        } else {
+                    return Errors::error401("The requested id:$id does not exist");
+        }
+
     }
 }
