@@ -2,14 +2,11 @@
 
 use Sirolad\app\base\controllers\UserController;
 
-//$userController = new UserController($app);
-
 $app->get('/register', function () use ($app) {
     $app->render('register.php');
 });
 
 $app->post('/register', function () use ($app) {
-    // $userController->register();
     echo UserController::register($app);
 });
 
@@ -23,6 +20,6 @@ $app->post('/auth/login', function () use ($app){
 /*
 | logout
 */
-$app->post('/auth/logout', function () use ($app){
+$app->get('/auth/logout', function () use ($app){
     echo UserController::logout($app);
 });

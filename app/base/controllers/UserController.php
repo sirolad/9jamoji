@@ -6,6 +6,7 @@ use Firebase\JWT\JWT;
 use Sirolad\app\base\Config;
 use Sirolad\app\base\models\User;
 use Sirolad\app\base\errors\Errors;
+use Sirolad\app\base\middleware\Authorize;
 
 class UserController
 {
@@ -79,11 +80,10 @@ class UserController
                 "issuer" => getenv('jwt_issuer'),
                 "not_before" => getenv('jwt_not_before'),
                 "user" => $authUser['username'],
-                "issued_time" => $issued_at,
                 "token_expire" => $expires
             );
 
-            $jwt = JWT::encode($token, $key, $algorithm);
+            $jwt = JWT::encode($token, $key);
 
             $success = array("status" => 200, "token" => $jwt, "issued at" => gmdate("Y-m-d H:i:s",$issued_at), "expires at" => gmdate("Y-m-d H:i:s",$expires), "token for" => $authUser['username']);
 
@@ -98,18 +98,21 @@ class UserController
         $token = $app->request->headers->get('Authorization');
 
         if (!isset($token)) {
-            return Errors::error401('Token not found or incorrect');
+            return Errors::error401('Token not found!');
         } else {
-            $decode_jwt = JWT::decode($jwt);
 
-            $success = array(
-                "status"  => 200,
-                "message" => "You have been successfully logged out!"
-            );
+                $passcode = Authorize::authentication($app);
+                if ($passcode) {
 
-            return json_encode($success);
+                    $success = array(
+                        "status"  => 200,
+                        "message" => "You have been successfully logged out!"
+                    );
+
+                    return json_encode($success);
+                }
+
         }
-
     }
 
 }
