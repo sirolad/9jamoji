@@ -17,10 +17,6 @@ class Authorize
 
         $token = $app->request->headers->get('Authorization');
 
-        if (! $token) {
-            return Errors::error401('Valid Authorization Credentials Missing, login to get one.');
-        } else {
-
             $config = new Config();
             $config::loadenv();
 
@@ -32,6 +28,5 @@ class Authorize
                 $app->halt(504, json_encode(['status' => 404, 'message' => 'The token supplied is invalid!.']));
             }
             return $decode_jwt->user;
-        }
     }
 }

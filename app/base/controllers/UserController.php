@@ -78,7 +78,6 @@ class UserController
             $token = array(
                 "issued" => getenv('jwt_issued_at'),
                 "issuer" => getenv('jwt_issuer'),
-                "not_before" => getenv('jwt_not_before'),
                 "user" => $authUser['username'],
                 "token_expire" => $expires
             );
