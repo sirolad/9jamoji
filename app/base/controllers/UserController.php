@@ -18,8 +18,7 @@ class UserController
         return $data;
     }
 
-    public static function register(Slim $app)
-    {
+    public static function register(Slim $app) {
         $app->response->headers->set('Content-Type', 'application/json');
         $username = $app->request->params(self::format('username'));
         $password = $app->request->params(self::format('password'));
@@ -44,8 +43,7 @@ class UserController
         }
     }
 
-    public static function login(Slim $app)
-    {
+    public static function login(Slim $app) {
         $app->response->headers->set('Content-Type', 'application/json');
 
         $username = $app->request->params(self::format('username'));
@@ -72,7 +70,6 @@ class UserController
             $config::loadenv();
 
             $key = getenv('jwt_key');
-            $algorithm = getenv('jwt_algorithm');
             $issued_at = time();
             $expires = time() + 1800;
             $token = array(
@@ -84,34 +81,29 @@ class UserController
 
             $jwt = JWT::encode($token, $key);
 
-            $success = array("status" => 200, "token" => $jwt, "issued at" => gmdate("Y-m-d H:i:s",$issued_at), "expires at" => gmdate("Y-m-d H:i:s",$expires), "token for" => $authUser['username']);
+            $success = array("status" => 200, "token" => $jwt, "issued at" => gmdate("Y-m-d H:i:s", $issued_at), "expires at" => gmdate("Y-m-d H:i:s", $expires), "token for" => $authUser['username']);
 
             return json_encode($success);
         }
     }
 
-    public static function logout(Slim $app)
-    {
+    public static function logout(Slim $app) {
         $app->response->headers->set('Content-Type', 'application/json');
 
         $token = $app->request->headers->get('Authorization');
 
         if (!isset($token)) {
             return Errors::error401('Token not found!');
-        } else {
+        }
+        else {
 
-                $passcode = Authorize::authentication($app);
-                if ($passcode) {
+            $passcode = Authorize::authentication($app);
+            if ($passcode) {
 
-                    $success = array(
-                        "status"  => 200,
-                        "message" => "You have been successfully logged out!"
-                    );
+                $success = array("status" => 200, "message" => "You have been successfully logged out!");
 
-                    return json_encode($success);
-                }
-
+                return json_encode($success);
+            }
         }
     }
-
 }
