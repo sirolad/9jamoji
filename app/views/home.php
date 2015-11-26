@@ -39,6 +39,13 @@
                 <h4>Login</h4>
                 <hr>
                     <pre>POST  http://9jamoji.herokuapp.com/auth/login</pre>
+                    <p>With a similar request body</p>
+                    <pre>
+                    {
+                        'username' : 'somebody',
+                        'password' : 'password'
+                    }
+                    </pre>
                 <p> Copy and paste the token received into the header to perform other actions.
                 <br>
                 <h4>Logout</h4>
@@ -56,14 +63,44 @@
                 <h4>Create Emoji</h4>
                 <hr>
                     <pre>POST  http://9jamoji.herokuapp.com/emojis</pre>
+                    <p>With a similar request body</p>
+                    <pre>
+                    {
+                        'name'      : 'Sunny',
+                        'char'      : 😎,
+                        'keywords'  : 'Holiday, fun',
+                        'category'  : 'Vacation'
+
+                    }
+                    </pre>
                 <br>
                 <h4>Update Emoji</h4>
                 <hr>
                     <pre>PUT  http://9jamoji.herokuapp.com/emojis/{id}</pre>
+                    <p>With a similar request body</p>
+                    <pre>
+                    {
+                        'name'      : 'Noisemaker',
+                        'char'      : 😷,
+                        'keywords'  : 'discipline,manners',
+                        'category'  : 'parenting'
+
+                    }
+                    </pre>
                 <br>
                 <h4>Partial Emoji Update</h4>
                 <hr>
                     <pre>PATCH  http://9jamoji.herokuapp.com/emojis/{id}</pre>
+                    <p>With a similar request body</p>
+                    <pre>
+                    {
+                        'name'      : 'Twale',
+                        'char'      : 🙌,
+                        'keywords'  : 'Accolades',
+                        'category'  : 'Respect'
+
+                    }
+                    </pre>
                 <br>
                 <h4>Delete Emoji</h4>
                 <hr>
