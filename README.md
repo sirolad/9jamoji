@@ -36,7 +36,7 @@ or
 
 ## Usage
 
-The documentation of this API is found at [the official website](https://9jamoji.herokuapp.com). Please refer to it for more information.
+The documentation of this API is found at [the official website](https://api-9jamoji.herokuapp.com). Please refer to it for more information.
 
 
 
