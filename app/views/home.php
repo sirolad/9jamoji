@@ -26,7 +26,7 @@
         <!-- Main component for a primary marketing message or call to action -->
         <div class="jumbotron">
             <h1>9jamoji API</h1>
-            <p>This Application Programming Interface is built with <a href="http://www.slimframework.com">Slim</a>, using <a href="https://packagist.org/packages/illuminate/database">Eloquent ORM</a> and <a href="https://packagist.org/packages/firebase/php-jwt">Json Web Token(JWT)</a> for authentication.</p>
+            <p>This Application Programming Interface is built with <a href="http://www.slimframework.com">Slim</a>, using <a href="https://packagist.org/packages/illuminate/database">Eloquent ORM</a> and <a href="https://packagist.org/packages/firebase/php-jwt">JSON Web Token(JWT)</a> for authentication.</p>
             <h3>Getting Started</h3>
             <hr>
             <ul>
