@@ -21,7 +21,7 @@ class Config
     {
         if (! getenv('APP_ENV'!== 'production')) {
 
-            $dotenv = new Dotenv(__DIR__. '/../..');
+            $dotenv = new Dotenv($_SERVER['DOCUMENT_ROOT']);
             $dotenv->load();
 
         }
