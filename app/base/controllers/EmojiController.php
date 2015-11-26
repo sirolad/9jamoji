@@ -146,7 +146,7 @@ class EmojiController
                 foreach ($columns as $key => $value) {
                     $update->$key = $value;
                 }
-
+                $update->updated_at = gmdate("Y-m-d H:i:s", time());
                 $update->save();
 
                 return json_encode(['status' => 201, 'message' => 'Emoji '.$id.' successfully updated!']);

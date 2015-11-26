@@ -17,7 +17,7 @@ class RoutesTest extends PHPUnit_Framework_TestCase
         Environment::mock(array_merge(array(
             'REQUEST_METHOD' => $method,
             'PATH_INFO' => $path,
-            'SERVER_NAME' => 'slim-test.dev',
+            'SERVER_NAME' => 'api-9jamoji.herokuapp.com',
         ), $options));
 
         $app = new \Slim\Slim();
@@ -34,6 +34,9 @@ class RoutesTest extends PHPUnit_Framework_TestCase
         $this->request('GET', $path, $options);
     }
 
+    /**
+     * Mock GET request route
+     */
     public function testIndex()
     {
         $this->get('/');
