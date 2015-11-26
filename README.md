@@ -1,5 +1,8 @@
 # 9jamoji
-A RestFul API using S​lim​ for Emoji​Service.
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/andela-sakande/PotatoORM/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/andela-sakande/potatoORM.svg)](https://travis-ci.org/andela-sakande/potatoORM)
+A RestFul API using S​lim​ for Emoji​Service. This API is built with Eloquent ORM and JWT for
+token based authentication.
 
 DIRECTORY STRUCTURE
 -------------------
@@ -20,56 +23,20 @@ public/       public directory to access the api
 Via Composer
 
 ``` bash
-$ composer require sirolad/potato-orm
+$ composer require sirolad/9jamoji
 ```
 or
 ``` composer.json
 "require": {
-        "sirolad/potato-orm": "dev-master"
+        "sirolad/9jamoji": "dev-master"
     }
 ```
 
 ## Usage
 
-Extend `Potato` class like so
-``` php
-    class Goat extends Potato
-    {
-    }
-```
-The following method can be used to access the classes
+The documentation of this API is found at [the official website](https://9jamoji.herokuapp.com). Please refer to it for more information.
 
-## getAll
-``` php
-   $goat = Goat::getAll();
-   print_r($goat);
-```
-This should print out all the ​goats ​in the ​goats ​table of Goat class.
 
-## find
-``` php
-    $goat = Goat::find(1);
-    $goat->password = "ewure";
-    echo $goat->save();
-```
-This should find the ​goat ​with `id=1` in the goats table and change the password to `ewure`.
-
-## save
-```php
-    $goat = new Goat();
-    $goat->name = "billy";
-    $goat->age  = 25;
-    $goat->job  = "developer";
-    $goat->save();
-```
-This should insert a record for goat `billy` in the goats table.
-
-## Update
-```php
-    $goat = Goat::where('name', 'JackBauer');
-    $goat->password = "wetina";
-    $goat->save();
-```
 
 ## Change log
 
@@ -91,15 +58,14 @@ Please check out [CONTRIBUTING](CONTRIBUTING.md) file for detailed contribution 
 
 ## Credits
 
-Open-source Evangelist is developed and maintained by `Surajudeen Akande`.
+9jamoji is developed and maintained by `Surajudeen Akande`.
 
 ## License
 
-Open-source Evangelist is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for details.
+9jamoji is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for details.
 
 ## Supported Databases
 
 ``` bash
-MySQL
-PGSQL
+All databases supported by Eloquent ORM.
 ```
