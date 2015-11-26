@@ -16,14 +16,16 @@ if (getenv('APP_ENV') !== 'production') {
     $config::loadenv();
 }
 
+$driver = getenv('driver');
+
 $capsule->addConnection(array(
-    'driver'    => getenv('driver'),
+    'driver'    => $driver,
     'host'      => getenv('host'),
     'database'  => getenv('database'),
     'username'  => getenv('username'),
     'password'  => getenv('password'),
-    'charset'   => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci',
+    'charset'   => $driver == 'mysql' ? 'utf8mb4' : 'utf8',
+    'collation' => $driver == 'mysql' ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
     'prefix'    => ''
 ));
 
