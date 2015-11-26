@@ -2,7 +2,6 @@
 /*
  * Index page
  */
-namespace Sirolad;
 
 require '../app/start.php';
 
