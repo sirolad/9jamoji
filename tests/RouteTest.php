@@ -125,5 +125,22 @@ class RoutesTest extends PHPUnit_Framework_TestCase
         $this->post('/auth/register');
         $this->assertEquals('200', $this->response->status());
     }
+    /*
+    | Test route /auth/login on post request
+    */
+    public function testGetRegister()
+    {
+        $this->get('/auth/register');
+        $this->assertEquals('200', $this->response->status());
+    }
+
+    /*
+    | Test route /auth/logout on get request
+    */
+    public function testLogoutUser()
+    {
+        $this->get('/auth/logout');
+        $this->assertEquals('200', $this->response->status());
+    }
 }
 
