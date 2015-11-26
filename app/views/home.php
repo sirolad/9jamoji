@@ -34,7 +34,7 @@
                     <p> Register <a href="/register">here</a>.</p>
                 </li>
                 <li>
-                    <p> Use any REST client to login and perform other operation using the routes below.</p>
+                    <p> Use any REST client to login and perform other operations using the routes below.</p>
                 </li>
             </ul>
             <br>
