@@ -1,6 +1,7 @@
 # 9jamoji
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/andela-sakande/PotatoORM/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/andela-sakande/9jamoji.svg)](https://travis-ci.org/andela-sakande/9jamoji)
+[![Quality Score](https://img.shields.io/scrutinizer/g/andela-sakande/9jamoji.svg?style=flat-square)](https://scrutinizer-ci.com/g/andela-sakande/9jamoji)
 
 A RestFul API using S​lim​ for Emoji​Service. This API is built with Eloquent ORM and JWT for
 token based authentication.
