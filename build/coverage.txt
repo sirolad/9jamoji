@@ -1,0 +1,30 @@
+
+
+Code Coverage Report:       
+  2015-11-26 13:59:39       
+                            
+ Summary:                   
+  Classes:  0.00% (0/12)    
+  Methods: 10.57% (24/227)  
+  Lines:   13.82% (151/1093)
+
+\Slim::Environment
+  Methods:  25.00% ( 2/ 8)   Lines:  39.39% ( 26/ 66)
+\Slim::Middleware
+  Methods:  50.00% ( 2/ 4)   Lines:  66.67% (  4/  6)
+\Slim::Slim
+  Methods:   8.82% ( 6/68)   Lines:  10.97% ( 42/383)
+\Slim\Helper::Set
+  Methods:  36.36% ( 8/22)   Lines:  55.81% ( 24/ 43)
+\Slim\Http::Headers
+  Methods:  50.00% ( 1/ 2)   Lines:  75.00% ( 12/ 16)
+\Slim\Http::Request
+  Methods:   2.50% ( 1/40)   Lines:   3.45% (  4/116)
+\Slim\Http::Response
+  Methods:   6.06% ( 2/33)   Lines:  20.00% ( 14/ 70)
+\Slim\Http::Util
+  Methods:   0.00% ( 0/11)   Lines:   4.85% (  8/165)
+\Slim\Middleware::Flash
+  Methods:   7.14% ( 1/14)   Lines:  17.95% (  7/ 39)
+\Slim\Middleware::MethodOverride
+  Methods:  50.00% ( 1/ 2)   Lines:  12.50% (  2/ 16)

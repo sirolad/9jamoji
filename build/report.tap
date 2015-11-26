@@ -1,0 +1,12 @@
+TAP version 13
+ok 1 - Sirolad\Test\RoutesTest::testIndex
+ok 2 - Sirolad\Test\RoutesTest::testFindAllEmojis
+ok 3 - Sirolad\Test\RoutesTest::testFindSingleEmojis
+ok 4 - Sirolad\Test\RoutesTest::testCreateEmojis
+ok 5 - Sirolad\Test\RoutesTest::testUpdateEmojis
+ok 6 - Sirolad\Test\RoutesTest::testDeleteEmojs
+ok 7 - Sirolad\Test\RoutesTest::testLoginUser
+ok 8 - Sirolad\Test\RoutesTest::testCreateUser
+ok 9 - Sirolad\Test\RoutesTest::testGetRegister
+ok 10 - Sirolad\Test\RoutesTest::testLogoutUser
+1..10
