@@ -38,7 +38,7 @@
                 <br>
                 <h4>Login</h4>
                 <hr>
-                    <pre>POST  http://api-9jamoji.herokuapp.com/auth/login</pre>
+                    <pre>POST  https://api-9jamoji.herokuapp.com/auth/login</pre>
                     <p>With a similar request body</p>
                     <pre>
                     {
@@ -50,19 +50,19 @@
                 <br>
                 <h4>Logout</h4>
                 <hr>
-                    <pre>GET  http://api-9jamoji.herokuapp.com/auth/logout</pre>
+                    <pre>GET  https://api-9jamoji.herokuapp.com/auth/logout</pre>
                 <br>
                 <h4>All Emoji</h4>
                 <hr>
-                    <pre>GET  http://api-9jamoji.herokuapp.com/emojis</pre>
+                    <pre>GET  https://api-9jamoji.herokuapp.com/emojis</pre>
                 <br>
                 <h4>Single Emoji</h4>
                 <hr>
-                    <pre>GET  http://api-9jamoji.herokuapp.com/emojis/{id}</pre>
+                    <pre>GET  https://api-9jamoji.herokuapp.com/emojis/{id}</pre>
                 <br>
                 <h4>Create Emoji</h4>
                 <hr>
-                    <pre>POST  http://api-9jamoji.herokuapp.com/emojis</pre>
+                    <pre>POST  https://api-9jamoji.herokuapp.com/emojis</pre>
                     <p>With a similar request body</p>
                     <pre>
                     {
@@ -76,7 +76,7 @@
                 <br>
                 <h4>Update Emoji</h4>
                 <hr>
-                    <pre>PUT  http://api-9jamoji.herokuapp.com/emojis/{id}</pre>
+                    <pre>PUT  https://api-9jamoji.herokuapp.com/emojis/{id}</pre>
                     <p>With a similar request body</p>
                     <pre>
                     {
@@ -90,7 +90,7 @@
                 <br>
                 <h4>Partial Emoji Update</h4>
                 <hr>
-                    <pre>PATCH  http://api-9jamoji.herokuapp.com/emojis/{id}</pre>
+                    <pre>PATCH  https://api-9jamoji.herokuapp.com/emojis/{id}</pre>
                     <p>With a similar request body</p>
                     <pre>
                     {
@@ -104,7 +104,7 @@
                 <br>
                 <h4>Delete Emoji</h4>
                 <hr>
-                    <pre>GET  http://api-9jamoji.herokuapp.com/emojis/{id}</pre>
+                    <pre>GET  https://api-9jamoji.herokuapp.com/emojis/{id}</pre>
             </div>
 
             <footer>
