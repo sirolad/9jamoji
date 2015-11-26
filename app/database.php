@@ -11,7 +11,10 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 $capsule = new Capsule;
 
 $config = new Config();
-$config::loadenv();
+
+if (getenv('APP_ENV') !== 'production') {
+    $config::loadenv();
+}
 
 $capsule->addConnection(array(
     'driver'    => getenv('driver'),
