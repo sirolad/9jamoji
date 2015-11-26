@@ -1,4 +1,12 @@
 <?php
+/**
+ * This class handles authorization using JWT decode method
+ *
+ * @package Sirolad\app\base\controllers\EmojiController
+ * @author  Surajudeen Akande <surajudeen.akande@andela.com>
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @link http://www.github.com/andela-sakande
+ */
 
 namespace Sirolad\app\base\middleware;
 
@@ -11,6 +19,12 @@ use Sirolad\app\base\errors\Errors;
 
 class Authorize
 {
+    /**
+     * Returns a JSON error output
+     *
+     * @param string
+     * @return string
+     */
     public static function authentication(Slim $app)
     {
         $app->response->headers->set('Content-Type', 'application/json');
@@ -25,7 +39,7 @@ class Authorize
             try {
                 $decode_jwt = JWT::decode($token,$key,$algorithm);
             } catch (Exception $e) {
-                $app->halt(504, json_encode(['status' => 404, 'message' => 'The token supplied is invalid!.']));
+                $app->halt(400, json_encode(['status' => 400, 'message' => 'The token supplied is invalid!.']));
             }
             return $decode_jwt->user;
     }

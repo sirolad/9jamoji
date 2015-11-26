@@ -1,4 +1,12 @@
 <?php
+/**
+ * This is the model class for emoji which extends Eloquent
+ *
+ * @package Sirolad\app\base\controllers\EmojiController
+ * @author  Surajudeen Akande <surajudeen.akande@andela.com>
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @link http://www.github.com/andela-sakande
+ */
 
 namespace Sirolad\app\base\models;
 
@@ -26,7 +34,10 @@ class Emoji extends Eloquent
      */
     public $timestamps = false;
 
-
+    /**
+     *
+     * Relationship between user and emoji models
+     */
     public function user()
     {
         return $this->belongsTo('Sirolad\app\base\model\User');

@@ -1,4 +1,7 @@
 <?php
+/*
+ * Connection to database using Illuminate\Database
+ */
 
 namespace Sirolad\app;
 

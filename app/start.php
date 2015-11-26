@@ -1,4 +1,7 @@
 <?php
+/*
+ * Instantiation of Eloquent and Slim
+ */
 namespace Sirolad\app;
 
 require_once '../vendor/autoload.php';

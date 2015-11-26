@@ -1,4 +1,7 @@
 <?php
+/*
+ * Routes for emoji actions
+ */
 
 use Sirolad\app\base\controllers\EmojiController;
 

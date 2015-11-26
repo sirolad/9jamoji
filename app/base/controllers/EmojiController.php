@@ -1,4 +1,12 @@
 <?php
+/**
+ * This class holds a set of background controller methods for emoji management.
+ *
+ * @package Sirolad\app\base\controllers\EmojiController
+ * @author  Surajudeen Akande <surajudeen.akande@andela.com>
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @link http://www.github.com/andela-sakande
+ */
 
 namespace Sirolad\app\base\controllers;
 
@@ -10,6 +18,12 @@ use Sirolad\app\base\controllers\UserController;
 
 class EmojiController
 {
+    /**
+     * Create an emoji resource
+     *
+     * @param Slim $app
+     * @return string
+     */
     public static function createEmoji(Slim $app)
     {
         $app->response->headers->set('Content-Type', 'application/json');
@@ -44,12 +58,25 @@ class EmojiController
         }
     }
 
+    /**
+     * Retrieve all available emoji resource
+     *
+     * @param Slim $app
+     * @return string
+     */
     public static function getAll(Slim $app)
     {
         $app->response->headers->set('Content-Type', 'application/json');
         echo Emoji::all();
     }
 
+    /**
+     * Retrieve an emoji resource
+     *
+     * @param int $id ID of an emoji
+     * @param Slim $app
+     * @return string
+     */
     public static function getOne(Slim $app, $id)
     {
         $app->response->headers->set('Content-Type', 'application/json');
@@ -62,6 +89,13 @@ class EmojiController
         }
     }
 
+    /**
+     * Destroy an emoji resource
+     *
+     * @param int $id ID of emoji
+     * @param Slim $app
+     * @return string
+     */
     public static function deleteEmoji(Slim $app, $id)
     {
         $app->response->headers->set('Content-Type', 'application/json');
@@ -87,6 +121,13 @@ class EmojiController
         }
     }
 
+    /**
+     * Update an emoji resource
+     *
+     * @param int $id ID of emoji to be updated
+     * @param Slim $app
+     * @return string
+     */
     public static function updateEmoji(Slim $app, $id)
     {
         $app->response->headers->set('Content-Type', 'application/json');
