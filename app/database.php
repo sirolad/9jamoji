@@ -3,8 +3,6 @@
  * Connection to database using Illuminate\Database
  */
 
-namespace Sirolad\app;
-
 use Sirolad\app\base\Config;
 use Illuminate\Database\Capsule\Manager as Capsule;
 

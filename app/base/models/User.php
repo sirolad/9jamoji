@@ -29,14 +29,6 @@ class User extends Eloquent
     public $timestamps = false;
 
     /**
-     * Relationship between User and Emoji Models
-     */
-    public function emojis()
-    {
-        return $this->hasMany('Emoji');
-    }
-
-    /**
      *  The attributes that are mass assignable.
      * @var array
      * */

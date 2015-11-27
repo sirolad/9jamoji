@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="9jamoji Test Suite" tests="10" assertions="10" failures="0" errors="0" time="0.544228">
-    <testsuite name="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" tests="10" assertions="10" failures="0" errors="0" time="0.544228">
-      <testcase name="testIndex" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="37" assertions="1" time="0.452972"/>
-      <testcase name="testFindAllEmojis" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="75" assertions="1" time="0.009279"/>
-      <testcase name="testFindSingleEmojis" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="83" assertions="1" time="0.010790"/>
-      <testcase name="testCreateEmojis" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="91" assertions="1" time="0.010732"/>
-      <testcase name="testUpdateEmojis" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="99" assertions="1" time="0.009635"/>
-      <testcase name="testDeleteEmojs" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="107" assertions="1" time="0.009934"/>
-      <testcase name="testLoginUser" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="115" assertions="1" time="0.010820"/>
-      <testcase name="testCreateUser" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="123" assertions="1" time="0.012140"/>
-      <testcase name="testGetRegister" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="131" assertions="1" time="0.009241"/>
-      <testcase name="testLogoutUser" class="Sirolad\Test\RoutesTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="140" assertions="1" time="0.008685"/>
-    </testsuite>
+  <testsuite name="MyTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/MyTest.php" tests="1" assertions="0" failures="0" errors="1" time="15.553362">
+    <testcase name="testCreateEmoji" class="MyTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/MyTest.php" line="37" assertions="0" time="15.553362">
+      <error type="PHPUnit_Framework_ExceptionWrapper">MyTest::testCreateEmoji
+GuzzleHttp\Exception\ServerException: Server error: `POST https://api-9jamoji.herokuapp.com/emojis` resulted in a `503 Service Unavailable` response:
+{"status":400,"message":"Login to get a token!"}
+
+
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:107
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/guzzle/src/Middleware.php:65
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:199
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:152
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/TaskQueue.php:60
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:240
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:217
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:261
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:219
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:62
+/Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/guzzle/src/Client.php:129
+/Users/user/snippets/checkpoints/9jamoji/tests/MyTest.php:42
+</error>
+    </testcase>
   </testsuite>
 </testsuites>

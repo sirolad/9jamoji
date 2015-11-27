@@ -7,7 +7,9 @@ use PHPUnit_Framework_TestCase;
 
 class RoutesTest extends PHPUnit_Framework_TestCase
 {
-
+    /**
+     * request method mocking Slim
+     */
     public function request($method, $path, $options = array())
     {
         // Capture STDOUT
@@ -17,7 +19,7 @@ class RoutesTest extends PHPUnit_Framework_TestCase
         Environment::mock(array_merge(array(
             'REQUEST_METHOD' => $method,
             'PATH_INFO' => $path,
-            'SERVER_NAME' => 'api-9jamoji.herokuapp.com',
+            'SERVER_NAME' => 'api-9jamoji.herokuap.com',
         ), $options));
 
         $app = new \Slim\Slim();

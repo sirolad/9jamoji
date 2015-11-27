@@ -33,13 +33,4 @@ class Emoji extends Eloquent
      * @var bool
      */
     public $timestamps = false;
-
-    /**
-     *
-     * Relationship between user and emoji models
-     */
-    public function user()
-    {
-        return $this->belongsTo('Sirolad\app\base\model\User');
-    }
 }

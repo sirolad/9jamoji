@@ -36,7 +36,7 @@ class EmojiController
         $token = $app->request->headers->get('Authorization');
 
         if (! $token) {
-            $app->halt(503, json_encode(['status' => 400, 'message' => 'Login to get a token!']));
+            $app->halt(401, json_encode(['status' => 401, 'message' => 'Login to get a token!']));
         }
 
         $passcode = Authorize::authentication($app);
@@ -67,7 +67,7 @@ class EmojiController
     public static function getAll(Slim $app)
     {
         $app->response->headers->set('Content-Type', 'application/json');
-        echo Emoji::all();
+        return Emoji::all();
     }
 
     /**
@@ -103,7 +103,7 @@ class EmojiController
         $token = $app->request->headers->get('Authorization');
 
         if (! $token) {
-            $app->halt(503, json_encode(['status' => 400, 'message' => 'Login to get a token!']));
+            $app->halt(401, json_encode(['status' => 401, 'message' => 'Login to get a token!']));
         }
 
         $passcode = Authorize::authentication($app);
@@ -111,9 +111,10 @@ class EmojiController
 
             $deleted = Emoji::destroy($id);
             if ($deleted) {
-                $info = array(
+                $info = [
                     "status"  => 201,
-                    "message" => "Emoji $id has been deleted successfully!");
+                    "message" => "Emoji $id has been deleted successfully!"
+                ];
                 return json_encode($info);
             } else {
                 return Errors::error401("The requested id:$id does not exist");
@@ -133,7 +134,7 @@ class EmojiController
         $app->response->headers->set('Content-Type', 'application/json');
         $token = $app->request->headers->get('Authorization');
         if (! $token) {
-            $app->halt(503, json_encode(['status' => 400, 'message' => 'Login to get a token!']));
+            $app->halt(401, json_encode(['status' => 401, 'message' => 'Login to get a token!']));
         }
 
         $passcode = Authorize::authentication($app);

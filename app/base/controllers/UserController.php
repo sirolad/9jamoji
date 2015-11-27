@@ -25,10 +25,7 @@ class UserController
      */
     public static function format($data)
     {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
+        return trim(stripslashes(htmlspecialchars($data)));
     }
 
     /**
@@ -76,7 +73,7 @@ class UserController
         $password = $app->request->params(self::format('password'));
 
         if (!isset($username) && !isset($password)) {
-            return Errors::error401("Username & Password Required!");
+            $app->halt(401, json_encode(["status" => 401, "message" => "Username & Password Required!"]));
         }
 
         $authUser = User::where('username', $username)->first();
@@ -87,8 +84,7 @@ class UserController
             return Errors::error401('Invalid Credentials');
         }
         else {
-            $config = new Config();
-            $config::loadenv();
+            Config::loadenv();
 
             $key = getenv('jwt_key');
             $token = array(

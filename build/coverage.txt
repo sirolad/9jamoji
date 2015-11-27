@@ -1,30 +1,48 @@
 
 
 Code Coverage Report:       
-  2015-11-26 13:59:39       
+  2015-11-27 21:49:52       
                             
  Summary:                   
-  Classes:  0.00% (0/12)    
-  Methods: 10.57% (24/227)  
-  Lines:   13.82% (151/1093)
+  Classes: 20.83% (5/24)    
+  Methods: 20.10% (42/209)  
+  Lines:   25.61% (639/2495)
 
-\Slim::Environment
-  Methods:  25.00% ( 2/ 8)   Lines:  39.39% ( 26/ 66)
-\Slim::Middleware
-  Methods:  50.00% ( 2/ 4)   Lines:  66.67% (  4/  6)
-\Slim::Slim
-  Methods:   8.82% ( 6/68)   Lines:  10.97% ( 42/383)
-\Slim\Helper::Set
-  Methods:  36.36% ( 8/22)   Lines:  55.81% ( 24/ 43)
-\Slim\Http::Headers
-  Methods:  50.00% ( 1/ 2)   Lines:  75.00% ( 12/ 16)
-\Slim\Http::Request
-  Methods:   2.50% ( 1/40)   Lines:   3.45% (  4/116)
-\Slim\Http::Response
-  Methods:   6.06% ( 2/33)   Lines:  20.00% ( 14/ 70)
-\Slim\Http::Util
-  Methods:   0.00% ( 0/11)   Lines:   4.85% (  8/165)
-\Slim\Middleware::Flash
-  Methods:   7.14% ( 1/14)   Lines:  17.95% (  7/ 39)
-\Slim\Middleware::MethodOverride
-  Methods:  50.00% ( 1/ 2)   Lines:  12.50% (  2/ 16)
+\GuzzleHttp::Client
+  Methods:   7.69% ( 1/13)   Lines:  39.25% ( 73/186)
+\GuzzleHttp::HandlerStack
+  Methods:  25.00% ( 4/16)   Lines:  27.71% ( 23/ 83)
+\GuzzleHttp::Middleware
+  Methods:  20.00% ( 2/10)   Lines:  23.29% ( 17/ 73)
+\GuzzleHttp::PrepareBodyMiddleware
+  Methods:  33.33% ( 1/ 3)   Lines:  15.91% (  7/ 44)
+\GuzzleHttp::RedirectMiddleware
+  Methods:  12.50% ( 1/ 8)   Lines:  17.44% ( 15/ 86)
+\GuzzleHttp\Exception::RequestException
+  Methods:  12.50% ( 1/ 8)   Lines:  62.96% ( 34/ 54)
+\GuzzleHttp\Handler::CurlFactory
+  Methods:  12.50% ( 2/16)   Lines:  35.41% (108/305)
+\GuzzleHttp\Handler::CurlHandler
+  Methods:  50.00% ( 1/ 2)   Lines:  81.82% (  9/ 11)
+\GuzzleHttp\Handler::CurlMultiHandler
+  Methods:  10.00% ( 1/10)   Lines:   5.81% (  5/ 86)
+\GuzzleHttp\Handler::EasyHandle
+  Methods:   0.00% ( 0/ 2)   Lines:  53.57% ( 15/ 28)
+\GuzzleHttp\Handler::Proxy
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  8/  8)
+\GuzzleHttp\Promise::FulfilledPromise
+  Methods:   0.00% ( 0/ 9)   Lines:  50.00% ( 12/ 24)
+\GuzzleHttp\Promise::Promise
+  Methods:  28.57% ( 4/14)   Lines:  52.85% ( 65/123)
+\GuzzleHttp\Promise::TaskQueue
+  Methods:  50.00% ( 3/ 6)   Lines:  47.06% (  8/ 17)
+\GuzzleHttp\Psr7::MessageTrait
+  Methods:  58.33% ( 7/12)   Lines:  38.03% ( 27/ 71)
+\GuzzleHttp\Psr7::Request
+  Methods:  22.22% ( 2/ 9)   Lines:  35.71% ( 20/ 56)
+\GuzzleHttp\Psr7::Response
+  Methods:  50.00% ( 2/ 4)   Lines:  55.00% ( 11/ 20)
+\GuzzleHttp\Psr7::Stream
+  Methods:  11.11% ( 2/18)   Lines:  39.77% ( 35/ 88)
+\GuzzleHttp\Psr7::Uri
+  Methods:  20.00% ( 6/30)   Lines:  24.22% ( 62/256)
