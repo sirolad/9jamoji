@@ -33,15 +33,24 @@ class EmojiController
         $keywords = $app->request->params('keywords');
         $category = $app->request->params(UserController::format('category'));
 
-        $token = $app->request->headers->get('Authorization');
+        if (! isset($name)) {
+            return Errors::error401('Insert a name');
+        }
 
-        if (! $token) {
-            $app->halt(401, json_encode(['status' => 401, 'message' => 'Login to get a token!']));
+        if (! isset($char)) {
+            return Errors::error401('Insert an emoji');
+        }
+
+        if (! isset($keywords)) {
+            return Errors::error401('Insert keywords');
+        }
+
+        if (! isset($category)) {
+            return Errors::error401('Insert a category');
         }
 
         $passcode = Authorize::authentication($app);
         if ($passcode) {
-            if (isset($name) && isset($char) && isset($keywords) && isset($category)) {
                 $emoji = new Emoji;
                 $emoji->name = $name;
                 $emoji->char = $char;
@@ -52,9 +61,6 @@ class EmojiController
                 $emoji->save();
 
                 return json_encode(['status' => 201, 'message' => 'Your emoji was successfully created.']);
-            } else {
-                return Errors::error401('Incomplete Input fields!');
-            }
         }
     }
 
@@ -67,7 +73,12 @@ class EmojiController
     public static function getAll(Slim $app)
     {
         $app->response->headers->set('Content-Type', 'application/json');
-        return Emoji::all();
+        $result = Emoji::all();
+        $processed = json_decode($result);
+            foreach ( $processed as $key ) {
+                $key->keywords = explode(", ", $key->keywords);
+            }
+            return json_encode($processed);
     }
 
     /**
@@ -81,9 +92,15 @@ class EmojiController
     {
         $app->response->headers->set('Content-Type', 'application/json');
 
-        $selected = Emoji::where('id', $id)->first();
-        if ($selected) {
-            echo $selected;
+        $find = Emoji::find($id);
+        if ($find) {
+            $selected = Emoji::where('id', $id)->get();
+            $processed = json_decode($selected);
+            foreach ($processed as $key) {
+                $key->keywords = explode(", ",$key->keywords);
+            }
+
+            return json_encode($processed);
         } else {
             return Errors::error401("The requested id:$id does not exist");
         }
@@ -99,12 +116,6 @@ class EmojiController
     public static function deleteEmoji(Slim $app, $id)
     {
         $app->response->headers->set('Content-Type', 'application/json');
-
-        $token = $app->request->headers->get('Authorization');
-
-        if (! $token) {
-            $app->halt(401, json_encode(['status' => 401, 'message' => 'Login to get a token!']));
-        }
 
         $passcode = Authorize::authentication($app);
         if ($passcode) {
@@ -132,10 +143,6 @@ class EmojiController
     public static function updateEmoji(Slim $app, $id)
     {
         $app->response->headers->set('Content-Type', 'application/json');
-        $token = $app->request->headers->get('Authorization');
-        if (! $token) {
-            $app->halt(401, json_encode(['status' => 401, 'message' => 'Login to get a token!']));
-        }
 
         $passcode = Authorize::authentication($app);
         if ($passcode) {

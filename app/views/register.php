@@ -29,14 +29,6 @@
                 </div>
             </div>
             <div class="control-group">
-                <!-- Password -->
-                <label class="control-label" for="password_confirm">Password (Confirm)</label>
-                <div class="controls">
-                    <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
-                    <p class="help-block">Please confirm password</p>
-                </div>
-            </div>
-            <div class="control-group">
                 <!-- Button -->
                 <div class="controls">
                     <button class="btn btn-success">Register</button>

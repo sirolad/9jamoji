@@ -1,151 +1,145 @@
 <?php
-
+/**
+ * Test case for testing the endpoints of https://api-9jamoji.herokuapp.com
+ */
 namespace Sirolad\Test;
 
-use Slim\Environment;
-use PHPUnit_Framework_TestCase;
+use GuzzleHttp\Client;
 
-class RoutesTest extends PHPUnit_Framework_TestCase
+class RouteTests extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * request method mocking Slim
+    /**s
+    * @var string api's url;
      */
-    public function request($method, $path, $options = array())
+    protected $api_url;
+
+    /**
+     * @var string Instance of GuzzleHttp
+     */
+    protected $client;
+
+    /**
+     * setUp Class constructor
+     */
+    public function setUp()
     {
-        // Capture STDOUT
-        ob_start();
-
-        // Prepare a mock environment
-        Environment::mock(array_merge(array(
-            'REQUEST_METHOD' => $method,
-            'PATH_INFO' => $path,
-            'SERVER_NAME' => 'api-9jamoji.herokuap.com',
-        ), $options));
-
-        $app = new \Slim\Slim();
-        $this->app = $app;
-        $this->request = $app->request();
-        $this->response = $app->response();
-
-        // Return STDOUT
-        return ob_get_clean();
-    }
-
-    public function get($path, $options = array())
-    {
-        $this->request('GET', $path, $options);
+        $this->client = new Client();
+        $this->api_url = 'https://api-9jamoji.herokuapp.com';
     }
 
     /**
-     * Mock GET request route
+     * testIndex homepage route
+     * @return int
      */
     public function testIndex()
     {
-        $this->get('/');
-        $this->assertEquals('200', $this->response->status());
+        $test = $this->client->request('GET', $this->api_url);
+        $this->assertEquals('200', $test->getStatusCode());
     }
 
-     /*
-    | Mock POST request route
-    */
-    public function post( $path, $options = array() )
+    /**
+     * testGetAll all emojis route
+     * @return int
+     */
+    public function testGetAll()
     {
-        $this->request('POST', $path, $options);
-    }
-    /*
-    | Mock PUT request route
-    */
-    public function put( $path, $options = array() )
-    {
-        $this->request('PUT', $path, $options);
-    }
-    /*
-    | Mock PATCH request route
-    */
-    public function patch( $path, $options = array() )
-    {
-        $this->request('PATCH', $path, $options);
-    }
-    /*
-    | Mock DELETE request route
-    */
-    public function delete( $path, $options = array() )
-    {
-        $this->request('DELETE', $path, $options);
+        $test = $this->client->request('GET', $this->api_url.'/emojis');
+        $this->assertEquals('200', $test->getStatusCode());
     }
 
-    /*
-    | Test route /emojis
-    */
-    public function testFindAllEmojis()
+    /**
+     * testLogout
+     * @return int
+     */
+    public function testLogout()
     {
-        $this->get('/emojis');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /emojis/1 on request
-    */
-    public function testFindSingleEmojis()
-    {
-        $this->get('/emojis/1');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /emojis on put request
-    */
-    public function testCreateEmojis()
-    {
-        $this->put('/emojis');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /emojis on patch request
-    */
-    public function testUpdateEmojis()
-    {
-        $this->patch('/emojis/1');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /emojis on delete request
-    */
-    public function testDeleteEmojs()
-    {
-        $this->delete('/emojis/1');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /auth/login on post request
-    */
-    public function testLoginUser()
-    {
-        $this->post('/auth/login');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /auth/login on post request
-    */
-    public function testCreateUser()
-    {
-        $this->post('/auth/register');
-        $this->assertEquals('200', $this->response->status());
-    }
-    /*
-    | Test route /auth/login on post request
-    */
-    public function testGetRegister()
-    {
-        $this->get('/auth/register');
-        $this->assertEquals('200', $this->response->status());
+        $test = $this->client->request('GET', $this->api_url.'/auth/logout');
+        $this->assertEquals('200', $test->getStatusCode());
     }
 
-    /*
-    | Test route /auth/logout on get request
-    */
-    public function testLogoutUser()
+    /**
+     * testLoginWithoutAuth
+     * @return Exception
+     */
+    public function testLoginWithoutAuth()
     {
-        $this->get('/auth/logout');
-        $this->assertEquals('200', $this->response->status());
+        try {
+            $this->client->request('POST', $this->api_url.'/auth/login', [
+                'auth' => ['juice','']]);
+        } catch (GuzzleHttp\Exception\ClientException $e) {
+            $test =  401;
+        }
+
+        $this->assertEquals(401, $test);
+    }
+
+    // /**
+    //  * testCreateEmojiWithoutAuth
+    //  * @return Exception
+    //  */
+    // public function testCreateEmojiWithoutAuth()
+    // {
+    //     try {
+    //         $this->client->request('POST', $this->api_url.'/emojis');
+    //     } catch (GuzzleHttp\Exception\ClientException $e) {
+    //         $test = 401;
+    //     }
+
+    //     $this->assertEquals(401, $test);
+    // }
+
+    // /**
+    //  * testPutEmojiWithoutAuth
+    //  * @return Exception
+    //  */
+    // public function testPutEmojiWithoutAuth()
+    // {
+    //     try {
+    //         $this->client->request('PUT', $this->api_url.'/emojis/3');
+    //     } catch (GuzzleHttp\Exception\ClientException $e) {
+    //         $test = 401;
+    //     }
+
+    //     $this->assertEquals(401, $test);
+    // }
+
+    // /**
+    //  * testPatchEmojiWithoutAuth
+    //  * @return Exception
+    //  */
+    // public function testPatchEmojiWithoutAuth()
+    // {
+    //     try {
+    //         $this->client->request('PATCH', $this->api_url.'/emojis/3');
+    //     } catch (GuzzleHttp\Exception\ClientException $e) {
+    //         $test = 401;
+    //     }
+
+    //     $this->assertEquals(401, $test);
+    // }
+
+    // /**
+    //  * testDeleteEmojiWithoutAuth
+    //  * @return Exception
+    //  */
+    // public function testDeleteEmojiWithoutAuth()
+    // {
+    //     try {
+    //         $this->client->request('DELETE', $this->api_url.'/emojis/3');
+    //     } catch (GuzzleHttp\Exception\ClientException $e) {
+    //         $test = 401;
+    //     }
+
+    //     $this->assertEquals(401, $test);
+    // }
+
+    /**
+     * testRegister
+     * @return int
+     */
+    public function testRegister()
+    {
+        $test = $this->client->request('GET', $this->api_url.'/register');
+        $this->assertEquals('200', $test->getStatusCode());
     }
 }
-

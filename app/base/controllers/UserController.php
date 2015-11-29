@@ -39,25 +39,17 @@ class UserController
         $app->response->headers->set('Content-Type', 'application/json');
         $username = $app->request->params(self::format('username'));
         $password = $app->request->params(self::format('password'));
-        $cpassword = $app->request->params(self::format('password_confirm'));
 
-        if ($username && $password && $cpassword) {
-            if (strlen($password) > 4) {
-                if ($password == $cpassword) {
-                    $user = User::firstOrCreate(array('username' => $username, 'password' => sha1($password)));
-                    return json_encode(['status' => 201, 'username' => $username, 'message' => 'Created! Login to get a token.']);
-                }
-                else {
-                    $app->halt(400, json_encode(['status' => 400, 'message' => 'Password does not match!']));
-                }
-            }
-            else {
-                $app->halt(400, json_encode(['status' => 400, 'message' => 'Password is too short!']));
-            }
-        }
-        else {
-            $app->halt(400, json_encode(['status' => 400, 'message' => 'Incomplete entry is not allowed!']));
-        }
+        $user = User::firstOrCreate([
+            'username' => $username,
+            'password' => sha1($password)
+        ]);
+
+        return json_encode([
+            'status' => 201,
+            'username' => $username,
+            'message' => 'Created! Login to get a token.'
+        ]);
     }
 
     /**
@@ -84,21 +76,37 @@ class UserController
             return Errors::error401('Invalid Credentials');
         }
         else {
-            Config::loadenv();
-
-            $key = getenv('jwt_key');
-            $token = array(
-                "issued" => getenv('jwt_issued_at'),
-                "issuer" => getenv('jwt_issuer'),
-                "user" => $authUser['username'],
-                "token_expire" => time() + 1800
-            );
-            $jwt = JWT::encode($token, $key);
-
-            $success = array("status" => 200, "token" => $jwt, "issued at" => gmdate("Y-m-d H:i:s", time()), "expires at" => gmdate("Y-m-d H:i:s", time() + 1800), "token for" => $authUser['username']);
-
-            return json_encode($success);
+           self::Tokenize($app);
         }
+    }
+
+    /**
+     * Generates Token which expires in One hour
+     * @param Slim $app
+     */
+    public static function Tokenize(Slim $app)
+    {
+        $username = $app->request->params(self::format('username'));
+
+        Config::loadenv();
+
+        $key = getenv('jwt_key');
+        $token = [
+            "issued" => getenv('jwt_issued_at'),
+            "issuer" => getenv('jwt_issuer'),
+            "user" => $username,
+            "exp" => time() + 3600
+        ];
+        $jwt = JWT::encode($token, $key);
+        $success = [
+            "status" => 200,
+            "token" => $jwt,
+            "issued at" => gmdate("Y-m-d H:i:s", time()),
+            "expires at" => gmdate("Y-m-d H:i:s", time() + 3600),
+            "token for" => $username
+            ];
+
+        echo json_encode($success);
     }
 
     /**
@@ -110,18 +118,15 @@ class UserController
     public static function logout(Slim $app)
     {
         $app->response->headers->set('Content-Type', 'application/json');
-        $token = $app->request->headers->get('Authorization');
 
-        if (!isset($token)) {
-            return Errors::error401('Token not found!');
-        }
-        else {
-            $passcode = Authorize::authentication($app);
-            if ($passcode) {
-                $success = array("status" => 200, "message" => "You have been successfully logged out!");
+        $passcode = Authorize::authentication($app);
+        if ($passcode) {
+            $success = [
+                "status" => 200,
+                "message" => "You have been successfully logged out!"
+            ];
 
-                return json_encode($success);
-            }
+            return json_encode($success);
         }
     }
 }

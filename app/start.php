@@ -12,6 +12,9 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+/**
+ * Instance of Slim with Twig for views
+ */
 $app = new Slim(['view' => new Twig(),
     'debug' => true
  ]);

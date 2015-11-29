@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="MyTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/MyTest.php" tests="1" assertions="0" failures="0" errors="1" time="15.553362">
-    <testcase name="testCreateEmoji" class="MyTest" file="/Users/user/snippets/checkpoints/9jamoji/tests/MyTest.php" line="37" assertions="0" time="15.553362">
-      <error type="PHPUnit_Framework_ExceptionWrapper">MyTest::testCreateEmoji
-GuzzleHttp\Exception\ServerException: Server error: `POST https://api-9jamoji.herokuapp.com/emojis` resulted in a `503 Service Unavailable` response:
-{"status":400,"message":"Login to get a token!"}
+  <testsuite name="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" tests="5" assertions="4" failures="0" errors="1" time="6.118837">
+    <testcase name="testIndex" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="34" assertions="1" time="1.267990"/>
+    <testcase name="testGetAll" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="44" assertions="1" time="2.169382"/>
+    <testcase name="testLogout" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="54" assertions="1" time="0.954751"/>
+    <testcase name="testLoginWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="64" assertions="0" time="0.887457">
+      <error type="PHPUnit_Framework_ExceptionWrapper">Sirolad\Test\RouteTests::testLoginWithoutAuth
+GuzzleHttp\Exception\ClientException: Client error: `POST https://api-9jamoji.herokuapp.com/auth/login` resulted in a `401 Unauthorized` response:
+{"status":401,"message":"Username &amp; Password Required!"}
 
 
 /Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php:107
@@ -18,8 +21,9 @@ GuzzleHttp\Exception\ServerException: Server error: `POST https://api-9jamoji.he
 /Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:219
 /Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/promises/src/Promise.php:62
 /Users/user/snippets/checkpoints/9jamoji/vendor/guzzlehttp/guzzle/src/Client.php:129
-/Users/user/snippets/checkpoints/9jamoji/tests/MyTest.php:42
+/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php:67
 </error>
     </testcase>
+    <testcase name="testRegister" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="139" assertions="1" time="0.839257"/>
   </testsuite>
 </testsuites>

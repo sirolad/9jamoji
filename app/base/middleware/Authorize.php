@@ -22,7 +22,7 @@ class Authorize
     /**
      * Returns a JSON error output
      *
-     * @param string
+     * @param Instance of Slim
      * @return string
      */
     public static function authentication(Slim $app)
@@ -33,6 +33,10 @@ class Authorize
         Config::loadenv();
         $key = getenv('jwt_key');
         $algorithm = array('HS256');
+
+        if (!$token) {
+            $app->halt(401, json_encode(['status' => 401, 'message' => 'You need a token to perform this action!']));
+        }
 
         try {
             $decode_jwt = JWT::decode($token,$key,$algorithm);

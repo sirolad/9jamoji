@@ -17,13 +17,15 @@ use Dotenv\Dotenv;
 */
 class Config
 {
+    /**
+     * load environment parameters
+     * @return resource
+     */
     public static function loadenv()
     {
         If (! getenv('APP_ENV') == 'production') {
             $dotenv = new Dotenv($_SERVER['DOCUMENT_ROOT']);
             $dotenv->load();
         }
-
-
     }
 }
