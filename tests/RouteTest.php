@@ -5,6 +5,7 @@
 namespace Sirolad\Test;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class RouteTests extends \PHPUnit_Framework_TestCase
 {
@@ -53,8 +54,13 @@ class RouteTests extends \PHPUnit_Framework_TestCase
      */
     public function testLogout()
     {
-        $test = $this->client->request('GET', $this->api_url.'/auth/logout');
-        $this->assertEquals('200', $test->getStatusCode());
+        try {
+            $this->client->request('GET', $this->api_url.'/auth/logout');
+        } catch (ClientException $e) {
+            $test = 401;
+        }
+
+        $this->assertEquals('401', $test);
     }
 
     /**
@@ -64,74 +70,68 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testLoginWithoutAuth()
     {
         try {
-            $this->client->request('POST', $this->api_url.'/auth/login', [
-                'auth' => ['juice','']]);
-        } catch (GuzzleHttp\Exception\ClientException $e) {
+            $this->client->request('POST', $this->api_url.'/auth/login');
+        } catch (ClientException $e) {
             $test =  401;
+        }
+
+        $this->assertEquals('401', $test);
+    }
+
+    /**
+     * testCreateEmojiWithoutAuth
+     * @return Exception
+     */
+    public function testCreateEmojiWithoutAuth()
+    {
+        $test =$this->client->request('POST', $this->api_url.'/emojis');
+        $this->assertEquals('200', $test->getStatusCode());
+    }
+
+    /**
+     * testPutEmojiWithoutAuth
+     * @return Exception
+     */
+    public function testPutEmojiWithoutAuth()
+    {
+        try {
+            $this->client->request('PUT', $this->api_url.'/emojis/3');
+        } catch (ClientException $e) {
+            $error = 401;
+        }
+
+        $this->assertEquals(401, $error);
+    }
+
+    /**
+     * testPatchEmojiWithoutAuth
+     * @return Exception
+     */
+    public function testPatchEmojiWithoutAuth()
+    {
+        try {
+            $this->client->request('PATCH', $this->api_url.'/emojis/3');
+        } catch (ClientException $e) {
+            $test = 401;
         }
 
         $this->assertEquals(401, $test);
     }
 
-    // /**
-    //  * testCreateEmojiWithoutAuth
-    //  * @return Exception
-    //  */
-    // public function testCreateEmojiWithoutAuth()
-    // {
-    //     try {
-    //         $this->client->request('POST', $this->api_url.'/emojis');
-    //     } catch (GuzzleHttp\Exception\ClientException $e) {
-    //         $test = 401;
-    //     }
+    /**
+     * testDeleteEmojiWithoutAuth
+     * @return Exception
+     */
+    public function testDeleteEmojiWithoutAuth()
+    {
+        try {
+            $this->client->request('DELETE', $this->api_url.'/emojis/3');
+        } catch (ClientException $e) {
+            $test = 401;
+        }
 
-    //     $this->assertEquals(401, $test);
-    // }
-
-    // /**
-    //  * testPutEmojiWithoutAuth
-    //  * @return Exception
-    //  */
-    // public function testPutEmojiWithoutAuth()
-    // {
-    //     try {
-    //         $this->client->request('PUT', $this->api_url.'/emojis/3');
-    //     } catch (GuzzleHttp\Exception\ClientException $e) {
-    //         $test = 401;
-    //     }
-
-    //     $this->assertEquals(401, $test);
-    // }
-
-    // /**
-    //  * testPatchEmojiWithoutAuth
-    //  * @return Exception
-    //  */
-    // public function testPatchEmojiWithoutAuth()
-    // {
-    //     try {
-    //         $this->client->request('PATCH', $this->api_url.'/emojis/3');
-    //     } catch (GuzzleHttp\Exception\ClientException $e) {
-    //         $test = 401;
-    //     }
-
-    //     $this->assertEquals(401, $test);
-    // }
-
-    // /**
-    //  * testDeleteEmojiWithoutAuth
-    //  * @return Exception
-    //  */
-    // public function testDeleteEmojiWithoutAuth()
-    // {
-    //     try {
-    //         $this->client->request('DELETE', $this->api_url.'/emojis/3');
-    //     } catch (GuzzleHttp\Exception\ClientException $e) {
-    //         $test = 401;
-    //     }
-
-    //     $this->assertEquals(401, $test);
-    // }
+        $this->assertEquals(401, $test);
+    }
 
     /**
      * testRegister

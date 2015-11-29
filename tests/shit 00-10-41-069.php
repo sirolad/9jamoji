@@ -3,13 +3,13 @@
 require_once '../vendor/autoload.php';
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 $client = new GuzzleHttp\Client();
 try {
-    $res = $client->request('GET', 'https://api.github.com/user');
-} catch (GuzzleHttp\Exception\ClientException $e) {
-    $out = 401;
-    //echo $out;
+    $client->request('GET', 'https://github.com/_abc_123_404');
+} catch (ClientException $e) {
+    $b= $e->getResponse();
 }
-echo $out;
 //echo $res->getStatusCode();
+var_dump($b);
