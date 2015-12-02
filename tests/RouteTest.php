@@ -31,7 +31,7 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     {
         $this->client  = new Client();
         $this->api_url = 'https://api-9jamoji.herokuapp.com';
-        $this->token   = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWQiOiJodHRwczpcL1wvYXBpLTlqYW1vamkuaGVyb2t1YXBwLmNvbSIsImlzc3VlciI6InNpcm9sYWQiLCJ1c2VyIjoiTmV3dXNlciIsImV4cCI6MTQ0OTA3OTE2Mn0.8oqPh1e2tpGoZGo_TalZrCovY_QfmfxwS9_eXVZOPNs';
+        $this->token   = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWQiOiJodHRwczpcL1wvYXBpLTlqYW1vamkuaGVyb2t1YXBwLmNvbSIsImlzc3VlciI6InNpcm9sYWQiLCJ1c2VyIjoiTmV3dXNlciIsImV4cCI6MTQ0OTA4Mzg2OH0.1u30ccoL5LA9hYuUDl3ZJKo2WV62GtqO7WbBNnCzw78';
     }
 
     /**
