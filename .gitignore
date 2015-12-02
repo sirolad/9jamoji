@@ -4,3 +4,5 @@
 .env
 /vendor
 app/views/.DS_Store
+/build
+.DS_Store

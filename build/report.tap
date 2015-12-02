@@ -1,11 +1,18 @@
 TAP version 13
 ok 1 - Sirolad\Test\RouteTests::testIndex
 ok 2 - Sirolad\Test\RouteTests::testGetAll
-ok 3 - Sirolad\Test\RouteTests::testLogout
-ok 4 - Sirolad\Test\RouteTests::testLoginWithoutAuth
-ok 5 - Sirolad\Test\RouteTests::testCreateEmojiWithoutAuth
-ok 6 - Sirolad\Test\RouteTests::testPutEmojiWithoutAuth
-ok 7 - Sirolad\Test\RouteTests::testPatchEmojiWithoutAuth
-ok 8 - Sirolad\Test\RouteTests::testDeleteEmojiWithoutAuth
-ok 9 - Sirolad\Test\RouteTests::testRegister
-1..9
+ok 3 - Sirolad\Test\RouteTests::testGetOne
+ok 4 - Sirolad\Test\RouteTests::testLogout
+ok 5 - Sirolad\Test\RouteTests::testLoginWithoutAuth
+ok 6 - Sirolad\Test\RouteTests::testCreateEmojiWithoutAuth
+ok 7 - Sirolad\Test\RouteTests::testPutEmojiWithoutAuth
+ok 8 - Sirolad\Test\RouteTests::testPatchEmojiWithoutAuth
+ok 9 - Sirolad\Test\RouteTests::testDeleteEmojiWithoutAuth
+ok 10 - Sirolad\Test\RouteTests::testRegister
+ok 11 - Sirolad\Test\RouteTests::testLogoutWithAuth
+ok 12 - Sirolad\Test\RouteTests::testLoginWithAuth
+ok 13 - Sirolad\Test\RouteTests::testCreateEmojiWithAuth
+ok 14 - Sirolad\Test\RouteTests::testPutEmojiWithAuth
+ok 15 - Sirolad\Test\RouteTests::testPatchEmojiWithAuth
+ok 16 - Sirolad\Test\RouteTests::testDeleteEmojiWithAuth
+1..16

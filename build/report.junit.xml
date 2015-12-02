@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" tests="9" assertions="9" failures="0" errors="0" time="9.356927">
-    <testcase name="testIndex" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="35" assertions="1" time="1.886608"/>
-    <testcase name="testGetAll" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="45" assertions="1" time="0.999324"/>
-    <testcase name="testLogout" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="55" assertions="1" time="1.244120"/>
-    <testcase name="testLoginWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="70" assertions="1" time="0.965768"/>
-    <testcase name="testCreateEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="85" assertions="1" time="0.930123"/>
-    <testcase name="testPutEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="100" assertions="1" time="0.836772"/>
-    <testcase name="testPatchEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="115" assertions="1" time="0.785295"/>
-    <testcase name="testDeleteEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="130" assertions="1" time="0.856159"/>
-    <testcase name="testRegister" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="145" assertions="1" time="0.852757"/>
+  <testsuite name="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" tests="16" assertions="43" failures="0" errors="0" time="14.541770">
+    <testcase name="testIndex" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="41" assertions="3" time="1.846695"/>
+    <testcase name="testGetAll" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="54" assertions="3" time="0.812788"/>
+    <testcase name="testGetOne" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="67" assertions="3" time="0.927312"/>
+    <testcase name="testLogout" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="80" assertions="2" time="0.943327"/>
+    <testcase name="testLoginWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="98" assertions="2" time="0.864315"/>
+    <testcase name="testCreateEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="115" assertions="3" time="0.768492"/>
+    <testcase name="testPutEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="128" assertions="2" time="0.841647"/>
+    <testcase name="testPatchEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="145" assertions="2" time="0.856617"/>
+    <testcase name="testDeleteEmojiWithoutAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="162" assertions="2" time="0.824152"/>
+    <testcase name="testRegister" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="179" assertions="3" time="0.778061"/>
+    <testcase name="testLogoutWithAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="192" assertions="3" time="0.777490"/>
+    <testcase name="testLoginWithAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="205" assertions="3" time="0.848705"/>
+    <testcase name="testCreateEmojiWithAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="221" assertions="3" time="0.916320"/>
+    <testcase name="testPutEmojiWithAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="239" assertions="3" time="0.900168"/>
+    <testcase name="testPatchEmojiWithAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="257" assertions="3" time="0.837985"/>
+    <testcase name="testDeleteEmojiWithAuth" class="Sirolad\Test\RouteTests" file="/Users/user/snippets/checkpoints/9jamoji/tests/RouteTest.php" line="275" assertions="3" time="0.797696"/>
   </testsuite>
 </testsuites>

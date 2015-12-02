@@ -8,9 +8,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 $capsule = new Capsule;
 
-$config = new Config();
-$config::loadenv();
-
+Config::loadenv();
 
 $driver = getenv('driver');
 

@@ -64,7 +64,7 @@ class UserController
         $username = $app->request->params(self::format('username'));
         $password = $app->request->params(self::format('password'));
 
-        if (!isset($username) && !isset($password)) {
+        if (!isset($username, $password)) {
             $app->halt(401, json_encode(["status" => 401, "message" => "Username & Password Required!"]));
         }
 
@@ -76,7 +76,7 @@ class UserController
             return Errors::error401('Invalid Credentials');
         }
         else {
-           self::Tokenize($app);
+           return self::Tokenize($app);
         }
     }
 
@@ -106,7 +106,7 @@ class UserController
             "token for" => $username
             ];
 
-        echo json_encode($success);
+        return json_encode($success);
     }
 
     /**
