@@ -5,6 +5,7 @@
 namespace Sirolad\Test;
 
 use GuzzleHttp\Client;
+use Sirolad\app\base\Config;
 use GuzzleHttp\Exception\ClientException;
 
 class RouteTests extends \PHPUnit_Framework_TestCase
@@ -29,9 +30,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
+        Config::loadenv();
         $this->client  = new Client();
         $this->api_url = 'https://api-9jamoji.herokuapp.com';
-        $this->token   = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3N1ZWQiOiJodHRwczpcL1wvYXBpLTlqYW1vamkuaGVyb2t1YXBwLmNvbSIsImlzc3VlciI6InNpcm9sYWQiLCJ1c2VyIjoiTmV3dXNlciIsImV4cCI6MTQ0OTA4Mzg2OH0.1u30ccoL5LA9hYuUDl3ZJKo2WV62GtqO7WbBNnCzw78';
+        $this->token   = getenv('test_token');
     }
 
     /**
@@ -41,9 +43,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testIndex()
     {
         $test = $this->client->request('GET', $this->api_url);
+        $content = $test->getHeader('content-type')[0];
+
         $this->assertEquals('200', $test->getStatusCode());
         $this->assertInternalType('object', $test->getBody());
-        $content = $test->getHeader('content-type')[0];
         $this->assertEquals('text/html;charset=UTF-8', $content);
     }
 
@@ -54,9 +57,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testGetAll()
     {
         $test = $this->client->request('GET', $this->api_url.'/emojis');
+        $content = $test->getHeader('content-type')[0];
+
         $this->assertEquals('200', $test->getStatusCode());
         $this->assertInternalType('object', $test->getBody());
-        $content = $test->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -67,9 +71,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testGetOne()
     {
         $test = $this->client->request('GET', $this->api_url.'/emojis/3');
+        $content = $test->getHeader('content-type')[0];
+
         $this->assertEquals('200', $test->getStatusCode());
         $this->assertInternalType('object', $test->getBody());
-        $content = $test->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -81,6 +86,7 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     {
         try {
             $body = $this->client->request('GET', $this->api_url.'/auth/logout');
+
             $this->assertInternalType('string', $body);
         } catch (ClientException $e) {
             $test = 401;
@@ -115,9 +121,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testCreateEmojiWithoutAuth()
     {
         $test =$this->client->request('POST', $this->api_url.'/emojis');
+        $content = $test->getHeader('content-type')[0];
+
         $this->assertEquals('200', $test->getStatusCode());
         $this->assertInternalType('object', $test);
-        $content = $test->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -179,9 +186,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testRegister()
     {
         $test = $this->client->request('GET', $this->api_url.'/register');
+        $content = $test->getHeader('content-type')[0];
+
         $this->assertEquals('200', $test->getStatusCode());
         $this->assertInternalType('object', $test->getBody());
-        $content = $test->getHeader('content-type')[0];
         $this->assertEquals('text/html;charset=UTF-8', $content);
     }
 
@@ -192,9 +200,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testLogoutWithAuth()
     {
         $body = $this->client->request('GET', $this->api_url.'/auth/logout',[ 'headers' => ['Authorization'=> $this->token]]);
+        $content = $body->getHeader('content-type')[0];
+
         $this->assertInternalType('object' , $body);
         $this->assertEquals('200', $body->getStatusCode());
-        $content = $body->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -208,9 +217,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
                             'username' => 'Newuser',
                             'password' => 'newuser'
         ]]);
+        $content = $body->getHeader('content-type')[0];
+
         $this->assertInternalType('object' , $body);
         $this->assertEquals('200', $body->getStatusCode());
-        $content = $body->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -226,9 +236,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
                             'keywords'  => 'Holiday, fun',
                             'category'  => 'Vacation'
         ]]);
+        $content = $body->getHeader('content-type')[0];
+
         $this->assertInternalType('object' , $body);
         $this->assertEquals('200', $body->getStatusCode());
-        $content = $body->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -244,9 +255,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
                             'keywords'  => 'Holiday, fun',
                             'category'  => 'Vacation'
         ]]);
+        $content = $body->getHeader('content-type')[0];
+
         $this->assertInternalType('object' , $body);
         $this->assertEquals('200', $body->getStatusCode());
-        $content = $body->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -262,9 +274,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
                             'keywords'  => 'discipline,manners',
                             'category'  => 'parenting'
         ]]);
+        $content = $body->getHeader('content-type')[0];
+
         $this->assertInternalType('object' , $body);
         $this->assertEquals('200', $body->getStatusCode());
-        $content = $body->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 
@@ -275,9 +288,10 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testDeleteEmojiWithAuth()
     {
         $body = $this->client->request('DELETE', $this->api_url.'/emojis/3',[ 'headers' => ['Authorization'=> $this->token]]);
+        $content = $body->getHeader('content-type')[0];
+
         $this->assertInternalType('object' , $body);
         $this->assertEquals('200', $body->getStatusCode());
-        $content = $body->getHeader('content-type')[0];
         $this->assertEquals('application/json', $content);
     }
 }

@@ -95,7 +95,7 @@ class UserController
             "issued" => getenv('jwt_issued_at'),
             "issuer" => getenv('jwt_issuer'),
             "user" => $username,
-            "exp" => time() + 3600
+            "exp" => time() + 31556926
         ];
         $jwt = JWT::encode($token, $key);
         $success = [
