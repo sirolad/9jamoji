@@ -269,7 +269,7 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testPatchEmojiWithAuth()
     {
         $body = $this->client->request('PATCH', $this->api_url.'/emojis/4',[ 'headers' => ['Authorization'=> $this->token],'form_params' => [
-                            'name'      => 'Noisemaker',
+                            'name'      => 'Noiser',
                             'char'      => '😷',
                             'keywords'  => 'discipline,manners',
                             'category'  => 'parenting'
