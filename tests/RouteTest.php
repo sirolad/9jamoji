@@ -250,7 +250,7 @@ class RouteTests extends \PHPUnit_Framework_TestCase
     public function testPutEmojiWithAuth()
     {
         $body = $this->client->request('PUT', $this->api_url.'/emojis/4',[ 'headers' => ['Authorization'=> $this->token],'form_params' => [
-                            'name'      => 'Sunny',
+                            'name'      => 'Sunn',
                             'char'      => '😎',
                             'keywords'  => 'Holiday, fun',
                             'category'  => 'Vacation'
